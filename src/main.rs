@@ -1,7 +1,21 @@
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+   /// Enter first integer
+   #[arg(short, long)]
+   first_number: i32,
+
+   /// Enter last integer
+   #[arg(short, long)]
+   last_number: i32,
+}
+
 
 fn main() {
-  
-  extended_euclidean(51,11);
+  let args = Args::parse();
+  extended_euclidean(i32::abs(args.first_number),i32::abs(args.last_number));
      
 }
 
@@ -60,7 +74,7 @@ pub fn extended_euclidean(first_num:i32,last_num:i32) -> AlgoResult{
     current_second_auxilliary_variable = last_second_auxilliary_variable - ratio * current_second_auxilliary_variable;
     last_second_auxilliary_variable = temp_second_auxilliary_variable;
   }
-  println!("gcd = {},modular multiplicative inverse or first coefficient of Bezout's equation = {},second coefficient of Bezout's equation = {}",last_remainder,last_first_auxilliary_variable,last_second_auxilliary_variable);
+  println!("gcd = {}\nmodular multiplicative inverse or first coefficient of Bezout's equation = {}\nsecond coefficient of Bezout's equation = {}",last_remainder,last_first_auxilliary_variable,last_second_auxilliary_variable);
   AlgoResult{
     gcd:last_remainder,
     multiplicative_inverse:last_first_auxilliary_variable,
