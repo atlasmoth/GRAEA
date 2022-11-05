@@ -3,19 +3,19 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-   /// Enter first integer
+   /// Enter integer
    #[arg(short, long)]
-   first_number: i32,
+   number: i32,
 
-   /// Enter last integer
+   /// Enter modulus
    #[arg(short, long)]
-   last_number: i32,
+   modulus: i32,
 }
 
 
 fn main() {
   let args = Args::parse();
-  extended_euclidean(i32::abs(args.first_number),i32::abs(args.last_number));
+  extended_euclidean(i32::abs(args.number),i32::abs(args.modulus));
      
 }
 
@@ -33,11 +33,11 @@ fn main() {
 
  * last_second_auxilliary_variable  is returned as the 
  */
-pub fn extended_euclidean(first_num:i32,last_num:i32) -> AlgoResult{
+pub fn extended_euclidean(number:i32,modulus:i32) -> AlgoResult{
 
   // initialize all base variables
-  let mut current_remainder = last_num;
-  let mut last_remainder = first_num;
+  let mut current_remainder = modulus;
+  let mut last_remainder = number;
   let mut current_first_auxilliary_variable = 0;
 
   let mut last_first_auxilliary_variable = 1; 
