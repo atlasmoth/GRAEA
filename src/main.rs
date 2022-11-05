@@ -1,7 +1,7 @@
 
 fn main() {
   
-  extended_euclidean(35,8);
+  extended_euclidean(51,11);
      
 }
 
@@ -27,8 +27,10 @@ pub fn extended_euclidean(first_num:i32,last_num:i32) -> AlgoResult{
   let mut current_first_auxilliary_variable = 0;
 
   let mut last_first_auxilliary_variable = 1; 
+  // the first value for the first auxilliary variable is 0 while its next value is 1
   let mut current_second_auxilliary_variable = 1;
   let mut last_second_auxilliary_variable = 0;
+  // the first value for the second auxilliary variable is 1 while its next value is 0
   /*
  * last_remainder is ultimately returned as the GCD
  * last_first_auxilliary_variable is ultimately returned as the modular multiplicative inverse
@@ -58,7 +60,7 @@ pub fn extended_euclidean(first_num:i32,last_num:i32) -> AlgoResult{
     current_second_auxilliary_variable = last_second_auxilliary_variable - ratio * current_second_auxilliary_variable;
     last_second_auxilliary_variable = temp_second_auxilliary_variable;
   }
-  println!("gcd = {},modular multiplicative inverse or first coefficient of Bezout's inequality = {},second coefficient of Bezout's inequality = {}",last_remainder,last_first_auxilliary_variable,last_second_auxilliary_variable);
+  println!("gcd = {},modular multiplicative inverse or first coefficient of Bezout's equation = {},second coefficient of Bezout's equation = {}",last_remainder,last_first_auxilliary_variable,last_second_auxilliary_variable);
   AlgoResult{
     gcd:last_remainder,
     multiplicative_inverse:last_first_auxilliary_variable,
